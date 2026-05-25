@@ -1,0 +1,77 @@
+import styles from "./lista.module.css";
+import Header from "@/src/components/header"
+
+const Lista = () => {
+    return (
+        <>
+            <Header />
+            <main className="page-content">
+                <section className="page-header layout_guide" aria-labelledby="titulo-ambientes">
+                    <h1 id="titulo-ambientes">
+                        Ambientes
+                    </h1>
+                    <form className="search-area" role="search">
+                        <label htmlFor="pesquisa-ambiente" className="sr-only">
+                            Pesquisar ambiente
+                        </label>
+                        <input type="search" id="pesquisa-ambiente" name="pesquisaAmbiente" placeholder="Pesquise o ambiente" />
+                        <button type="button" className="filter-button" aria-label="Filtrar ambientes">
+                            <i className="fa-solid fa-sliders" />
+                        </button>
+                    </form>
+                </section>
+                <section className="table-section layout_guide" aria-label="Lista de ambientes">
+                    <table className="environment-table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Local
+                                </th>
+                                <th>
+                                    Responsável
+                                </th>
+                                <th>
+                                    Detalhes
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr className="">
+                                <td>
+                                    Sala 30/31 (anfiteatro)
+                                </td>
+                                <td>
+                                    Samanta Melissa
+                                </td>
+                                <td>
+                                    <a href="#" aria-label="Ver detalhes da Sala 30/31">
+                                        <i className="fa-solid fa-circle-info" />
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+                <nav className="pagination" aria-label="Paginação">
+                    <button type="button" className="pagination-button" aria-label="Página anterior">
+                        ‹
+                    </button>
+                    <a href="#" className="pagination-link current" aria-current="page">
+                        1
+                    </a>
+                    <a href="#" className="pagination-link">
+                        2
+                    </a>
+                    <a href="#" className="pagination-link">
+                        3
+                    </a>
+                    <button type="button" className="pagination-button" aria-label="Próxima página">
+                        ›
+                    </button>
+                </nav>
+            </main>
+        </>
+    );
+};
+
+export default Lista;

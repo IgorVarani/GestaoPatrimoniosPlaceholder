@@ -1,0 +1,90 @@
+.topbar {
+    height: 78px;
+    background-color: #cf2929;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+    display: flex;
+    justify-content: center;
+}
+
+.navbar {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.layout_guide {
+    width: min(80%, 1520px);
+}
+
+.logo {
+    width: 135px;
+    display: block;
+}
+
+.menu-list {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 100px;
+}
+
+.menu-link {
+    color: #ffffff;
+    font-size: var(--tamanho-fonte-padrao);
+    font-weight: 700;
+}
+
+.user-area {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 14px;
+    color: #ffffff;
+}
+
+.user-icon {
+    width: 50px;
+    height: 50px;
+    border: none;
+    border-radius: 12px;
+    background-color: #ffffff;
+    color: #cf2929;
+    font-size: 26px;
+    cursor: pointer;
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.user-info strong,
+.user-info span {
+    font-size: var(--tamanho-fonte-padrao);
+}
+
+.arrow-button,
+.hamburguer {
+    border: none;
+    background-color: transparent;
+    color: #ffffff;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+.hamburguer {
+    display: none;
+}
+
+/* RESPONSIVO HEADER */
+@media (max-width: 1200px) {
+    .menu-list,
+    .user-area {
+        display: none;
+    }
+
+    .hamburguer {
+        display: block;
+    }
+}
