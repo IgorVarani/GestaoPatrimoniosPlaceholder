@@ -79,7 +79,6 @@ builder.Services.AddScoped<CargoService>();
 builder.Services.AddScoped<IStatusPatrimonioRepository, StatusPatrimonioRepository>();
 builder.Services.AddScoped<StatusPatrimonioService>();
 
-
 // Usuários
 builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
 builder.Services.AddScoped<UsuarioService>();
@@ -154,13 +153,25 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 Encoding.UTF8.GetBytes(chave)
             ),
 
-            // o token geralmente tem 5 minutos de tolerancia, aqui colocamos para remover essa tolerancia
-            // remove tolerância extra no vencimento do token
+            // o token geralmente tem 5 minutos de tolerancia, aqui colocamos para remover essa tolerancia - Késsia.
+            // remove tolerância extra no vencimento do token - Késsia.
             ClockSkew = TimeSpan.Zero
         };
     });
 
 builder.Services.AddAuthorization();
+
+// Adicionar CORS
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("CorsPolicy",
+        builder =>
+        {
+            builder.AllowAnyOrigin()
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+        });
+});
 
 var app = builder.Build();
 
@@ -172,9 +183,10 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
 app.UseAuthorization();
 
-app.MapControllers();
+// Adicionar CORS
+app.UseCors("CorsPolicy");
 
+app.MapControllers();
 app.Run();
