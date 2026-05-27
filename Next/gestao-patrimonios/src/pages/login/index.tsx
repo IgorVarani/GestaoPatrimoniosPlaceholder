@@ -1,6 +1,35 @@
+import { useRouter } from "next/router";
 import styles from "./login.module.css";
+import React, { useState } from "react";
+import { erro, sucesso } from "@/src/utils/toast";
+import { login } from "../api/authService";
 
 const Login = () => {
+
+    const [nif, setNif] = useState<string>("");
+    const [senha, setSenha] = useState<string>("");
+    const router = useRouter();
+    const [loading, setLoading] = useState(false);
+
+    async function autenticar(e: React.FormEvent<HTMLFormElement>)
+    {
+        e.preventDefault();
+        if (loading) return;
+
+        try
+        {
+            setLoading(true);
+            await login(nif, senha);
+
+            sucesso("Login bem sucedido!", () => router.push("/ambientes"));
+        }
+        catch (error: any)
+        {
+            erro(error.message);
+            setLoading(false);
+        }
+    }
+
     return (
         <>
             <main className={styles.login_page}>
@@ -38,7 +67,7 @@ const Login = () => {
                     className={styles.login_area}
                     aria-label="Formulário de login"
                 >
-                    <form className={styles.login_form}>
+                    <form className={styles.login_form} onSubmit={autenticar}>
 
                         <h1>
                             Login
@@ -55,6 +84,7 @@ const Login = () => {
                                 name="nif"
                                 placeholder="Insira o seu NIF"
                                 required
+                                value={nif} onChange={(e) => setNif(e.target.value)}
                             />
                         </div>
 
@@ -70,6 +100,7 @@ const Login = () => {
                                     name="senha"
                                     placeholder="Insira a sua senha"
                                     required
+                                    value={senha} onChange={(e) => setSenha(e.target.value)}
                                 />
 
                                 <button

@@ -1,3 +1,4 @@
+import Lista from "@/src/components/cards-lista/cards-lista";
 import styles from "./patrimonios.module.css";
 import Header from "@/src/components/header/header";
 
@@ -42,44 +43,7 @@ const Patrimonios = () => {
                     </form>
                 </section>
 
-                <section
-                    className={`${styles.table_section} ${styles.layout_guide}`}
-                    aria-label="Lista de patrimonios"
-                >
-                    <table className={styles.environment_table}>
-                        <thead>
-                            <tr>
-                                <th>Patrimônio</th>
-                                <th>Denominação</th>
-                                <th>Tipo</th>
-                                <th>Data transfêrencia</th>
-                                <th>Detalhes</th>
-                                <th>Transferir</th>
-                            </tr>
-                        </thead>
-
-                        <tbody>
-                            <tr>
-                                <td>1236808</td>
-                                <td>MESA TRAPEZOIDAL DC-1987a</td>
-                                <td>Mesa</td>
-                                <td>11/02/26</td>
-
-                                <td>
-                                    <a href="#" aria-label="Ver detalhes do patrimonio">
-                                        <i className="fa-solid fa-circle-info" />
-                                    </a>
-                                </td>
-
-                                <td>
-                                    <a href="#" aria-label="Transferir patrimonio">
-                                        <i className="fa-solid fa-arrow-right-arrow-left" />
-                                    </a>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </section>
+                <Lista page="patrimonios" />
 
                 <nav className={styles.pagination} aria-label="Paginação">
 

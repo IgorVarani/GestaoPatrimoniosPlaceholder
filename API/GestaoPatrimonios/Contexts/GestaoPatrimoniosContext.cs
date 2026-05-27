@@ -44,13 +44,17 @@ public partial class GestaoPatrimoniosContext : DbContext
 
     public virtual DbSet<Usuario> Usuario { get; set; }
 
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
+        => optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=GestaoPatrimonios;Trusted_Connection=True;TrustServerCertificate=True");
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Area>(entity =>
         {
-            entity.HasKey(e => e.AreaID).HasName("PK__Area__70B82028AC8735B2");
+            entity.HasKey(e => e.AreaID).HasName("PK__Area__70B8202871EE9845");
 
-            entity.HasIndex(e => e.NomeArea, "UQ__Area__9A779760EF261921").IsUnique();
+            entity.HasIndex(e => e.NomeArea, "UQ__Area__9A7797604AEAD547").IsUnique();
 
             entity.Property(e => e.AreaID).HasDefaultValueSql("(newid())");
             entity.Property(e => e.NomeArea)
@@ -60,7 +64,7 @@ public partial class GestaoPatrimoniosContext : DbContext
 
         modelBuilder.Entity<Bairro>(entity =>
         {
-            entity.HasKey(e => e.BairroID).HasName("PK__Bairro__4A093623A14B3E99");
+            entity.HasKey(e => e.BairroID).HasName("PK__Bairro__4A0936233BA07D39");
 
             entity.Property(e => e.BairroID).HasDefaultValueSql("(newid())");
             entity.Property(e => e.NomeBairro)
@@ -75,9 +79,9 @@ public partial class GestaoPatrimoniosContext : DbContext
 
         modelBuilder.Entity<Cargo>(entity =>
         {
-            entity.HasKey(e => e.CargoID).HasName("PK__Cargo__B4E665EDED832E4F");
+            entity.HasKey(e => e.CargoID).HasName("PK__Cargo__B4E665ED9ACF23F8");
 
-            entity.HasIndex(e => e.NomeCargo, "UQ__Cargo__4D9FD7DE7CA09236").IsUnique();
+            entity.HasIndex(e => e.NomeCargo, "UQ__Cargo__4D9FD7DE2F3D6861").IsUnique();
 
             entity.Property(e => e.CargoID).HasDefaultValueSql("(newid())");
             entity.Property(e => e.NomeCargo)
@@ -87,7 +91,7 @@ public partial class GestaoPatrimoniosContext : DbContext
 
         modelBuilder.Entity<Cidade>(entity =>
         {
-            entity.HasKey(e => e.CidadeID).HasName("PK__Cidade__B6800959959BB006");
+            entity.HasKey(e => e.CidadeID).HasName("PK__Cidade__B6800959A9A2AE7F");
 
             entity.Property(e => e.CidadeID).HasDefaultValueSql("(newid())");
             entity.Property(e => e.Estado)
@@ -100,7 +104,7 @@ public partial class GestaoPatrimoniosContext : DbContext
 
         modelBuilder.Entity<Endereco>(entity =>
         {
-            entity.HasKey(e => e.EnderecoID).HasName("PK__Endereco__B9D9462F94F0C911");
+            entity.HasKey(e => e.EnderecoID).HasName("PK__Endereco__B9D9462F4AB71D41");
 
             entity.Property(e => e.EnderecoID).HasDefaultValueSql("(newid())");
             entity.Property(e => e.CEP)
@@ -121,7 +125,7 @@ public partial class GestaoPatrimoniosContext : DbContext
 
         modelBuilder.Entity<Localizacao>(entity =>
         {
-            entity.HasKey(e => e.LocalizacaoID).HasName("PK__Localiza__83ABDECA7AB40F04");
+            entity.HasKey(e => e.LocalizacaoID).HasName("PK__Localiza__83ABDECA07B6BB3C");
 
             entity.ToTable(tb => tb.HasTrigger("trg_Local_SoftDelete"));
 
@@ -158,7 +162,7 @@ public partial class GestaoPatrimoniosContext : DbContext
 
         modelBuilder.Entity<LogPatrimonio>(entity =>
         {
-            entity.HasKey(e => e.LogPatrimonioID).HasName("PK__LogPatri__E716D12BCD0D9417");
+            entity.HasKey(e => e.LogPatrimonioID).HasName("PK__LogPatri__E716D12B55A68BC3");
 
             entity.Property(e => e.LogPatrimonioID).HasDefaultValueSql("(newid())");
             entity.Property(e => e.DataTransferencia).HasPrecision(0);
@@ -191,11 +195,11 @@ public partial class GestaoPatrimoniosContext : DbContext
 
         modelBuilder.Entity<Patrimonio>(entity =>
         {
-            entity.HasKey(e => e.PatrimonioID).HasName("PK__Patrimon__C5A60BDE831DF492");
+            entity.HasKey(e => e.PatrimonioID).HasName("PK__Patrimon__C5A60BDEF6972D7F");
 
             entity.ToTable(tb => tb.HasTrigger("trg_Patrimonio_SoftDelete"));
 
-            entity.HasIndex(e => e.NumeroPatrimonio, "UQ__Patrimon__3BC8B35DD8F3F2EB").IsUnique();
+            entity.HasIndex(e => e.NumeroPatrimonio, "UQ__Patrimon__3BC8B35D87559C59").IsUnique();
 
             entity.Property(e => e.PatrimonioID).HasDefaultValueSql("(newid())");
             entity.Property(e => e.Denominacao).IsUnicode(false);
@@ -218,7 +222,7 @@ public partial class GestaoPatrimoniosContext : DbContext
 
         modelBuilder.Entity<SolicitacaoTransferencia>(entity =>
         {
-            entity.HasKey(e => e.TransferenciaID).HasName("PK__Solicita__E5B4F5F272F49BAE");
+            entity.HasKey(e => e.TransferenciaID).HasName("PK__Solicita__E5B4F5F2FACBC983");
 
             entity.Property(e => e.TransferenciaID).HasDefaultValueSql("(newid())");
             entity.Property(e => e.DataCriacaoSolicitante).HasPrecision(0);
@@ -252,9 +256,9 @@ public partial class GestaoPatrimoniosContext : DbContext
 
         modelBuilder.Entity<StatusPatrimonio>(entity =>
         {
-            entity.HasKey(e => e.StatusPatrimonioID).HasName("PK__StatusPa__B3F33609E6A86F51");
+            entity.HasKey(e => e.StatusPatrimonioID).HasName("PK__StatusPa__B3F3360944BD3BCE");
 
-            entity.HasIndex(e => e.NomeStatus, "UQ__StatusPa__C5C60F1AB647CE18").IsUnique();
+            entity.HasIndex(e => e.NomeStatus, "UQ__StatusPa__C5C60F1A7EAC1DEC").IsUnique();
 
             entity.Property(e => e.StatusPatrimonioID).HasDefaultValueSql("(newid())");
             entity.Property(e => e.NomeStatus)
@@ -264,9 +268,9 @@ public partial class GestaoPatrimoniosContext : DbContext
 
         modelBuilder.Entity<StatusTransferencia>(entity =>
         {
-            entity.HasKey(e => e.StatusTransferenciaID).HasName("PK__StatusTr__7AA828B9EBAB7407");
+            entity.HasKey(e => e.StatusTransferenciaID).HasName("PK__StatusTr__7AA828B9AF61F7F2");
 
-            entity.HasIndex(e => e.NomeStatus, "UQ__StatusTr__C5C60F1A73A90FBB").IsUnique();
+            entity.HasIndex(e => e.NomeStatus, "UQ__StatusTr__C5C60F1A3F58B8D4").IsUnique();
 
             entity.Property(e => e.StatusTransferenciaID).HasDefaultValueSql("(newid())");
             entity.Property(e => e.NomeStatus)
@@ -276,9 +280,9 @@ public partial class GestaoPatrimoniosContext : DbContext
 
         modelBuilder.Entity<TipoAlteracao>(entity =>
         {
-            entity.HasKey(e => e.TipoAlteracaoID).HasName("PK__TipoAlte__9BEF4F0DBF37273D");
+            entity.HasKey(e => e.TipoAlteracaoID).HasName("PK__TipoAlte__9BEF4F0D1F5F6FF5");
 
-            entity.HasIndex(e => e.NomeTipo, "UQ__TipoAlte__7859A10A5E13AD20").IsUnique();
+            entity.HasIndex(e => e.NomeTipo, "UQ__TipoAlte__7859A10AD2DD1B48").IsUnique();
 
             entity.Property(e => e.TipoAlteracaoID).HasDefaultValueSql("(newid())");
             entity.Property(e => e.NomeTipo)
@@ -288,9 +292,9 @@ public partial class GestaoPatrimoniosContext : DbContext
 
         modelBuilder.Entity<TipoUsuario>(entity =>
         {
-            entity.HasKey(e => e.TipoUsuarioID).HasName("PK__TipoUsua__7F22C7027820F0BC");
+            entity.HasKey(e => e.TipoUsuarioID).HasName("PK__TipoUsua__7F22C702C5732B9B");
 
-            entity.HasIndex(e => e.NomeTipo, "UQ__TipoUsua__7859A10AB2716F67").IsUnique();
+            entity.HasIndex(e => e.NomeTipo, "UQ__TipoUsua__7859A10A2153AE68").IsUnique();
 
             entity.Property(e => e.TipoUsuarioID).HasDefaultValueSql("(newid())");
             entity.Property(e => e.NomeTipo)
@@ -300,19 +304,19 @@ public partial class GestaoPatrimoniosContext : DbContext
 
         modelBuilder.Entity<Usuario>(entity =>
         {
-            entity.HasKey(e => e.UsuarioID).HasName("PK__Usuario__2B3DE7989C9A2AD6");
+            entity.HasKey(e => e.UsuarioID).HasName("PK__Usuario__2B3DE798B6C22877");
 
             entity.ToTable(tb => tb.HasTrigger("trg_Usuario_SoftDelete"));
 
-            entity.HasIndex(e => e.RG, "UQ__Usuario__321537C83634DD64").IsUnique();
+            entity.HasIndex(e => e.RG, "UQ__Usuario__321537C808FB179A").IsUnique();
 
-            entity.HasIndex(e => e.CarteiraTrabalho, "UQ__Usuario__6E25BCA234394466").IsUnique();
+            entity.HasIndex(e => e.CarteiraTrabalho, "UQ__Usuario__6E25BCA25A30CF3E").IsUnique();
 
-            entity.HasIndex(e => e.Email, "UQ__Usuario__A9D10534E6AB21B9").IsUnique();
+            entity.HasIndex(e => e.Email, "UQ__Usuario__A9D105341042A946").IsUnique();
 
-            entity.HasIndex(e => e.CPF, "UQ__Usuario__C1F897315D7A8495").IsUnique();
+            entity.HasIndex(e => e.CPF, "UQ__Usuario__C1F897310567EDCC").IsUnique();
 
-            entity.HasIndex(e => e.NIF, "UQ__Usuario__C7DEC3303435D3B1").IsUnique();
+            entity.HasIndex(e => e.NIF, "UQ__Usuario__C7DEC330DA00FC18").IsUnique();
 
             entity.Property(e => e.UsuarioID).HasDefaultValueSql("(newid())");
             entity.Property(e => e.Ativo).HasDefaultValue(true);
