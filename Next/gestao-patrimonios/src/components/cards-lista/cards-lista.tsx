@@ -149,6 +149,8 @@ const Lista = ({ page }: ListaProps) => {
                     </table>
                 </section>
             )}
+
+            
         </>
     )
 }
