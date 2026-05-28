@@ -1,22 +1,77 @@
+import { useEffect, useState } from "react";
 import styles from "./cards-lista.module.css"
+import { verificarAutenticacao } from "@/src/utils/auth";
+import { listarPatrimonio } from "@/src/pages/api/patrimonioService";
 
 type ListaProps = {
     page?: string;
 };
 
+type Patrimonio =
+{
+    patrimonioID: string,
+    denominacao: string,
+    numeroPatrimonio: string,
+    valor: number,
+    localizacaoID: string,
+    statusPatrimonioID: string,
+}
+
 const Lista = ({ page }: ListaProps) => {
 
-    const [jogos, setJogos] = useState<Jogo[]>([]);
+    const [patrimonios, setPatrimonios] = useState<Patrimonio[]>([]);
     const [paginaAtual, setPaginaAtual] = useState(1);
     const [ordenacao, setOrdenacao] = useState("");
     const [pesquisa, setPesquisa] = useState("");
     const estaLogado = verificarAutenticacao();
     const cardsPorPagina = 3;
 
-    const indiceInicial = (paginaAtual - 1) * jogosPorPagina;
-    const indiceFinal = indiceInicial + jogosPorPagina;
-    const jogosPaginados = jogosOrdenados.slice(indiceInicial, indiceFinal);
-    const totalPaginas = Math.ceil(jogosOrdenados.length / jogosPorPagina);
+    async function carregarPatrimonios()
+    {
+        try
+        {
+            const lista = await listarPatrimonio();
+            setPatrimonios(lista);
+        }
+        catch(error)
+        {
+            console.log(error);
+        }
+    }
+    
+    const patrimoniosFiltrados = patrimonios.filter((patrimonio) =>
+        patrimonio.denominacao
+            .toLowerCase()
+            .includes(pesquisa.toLowerCase())
+    );
+
+    const patrimoniosOrdenados = [...patrimoniosFiltrados];
+
+    const indiceInicial = (paginaAtual - 1) * cardsPorPagina;
+    const indiceFinal = indiceInicial + cardsPorPagina;
+    const patrimoniosPaginados = patrimoniosOrdenados.slice(indiceInicial, indiceFinal);
+    const totalPaginas = Math.ceil(patrimoniosOrdenados.length / cardsPorPagina);
+
+    function proximaPagina()
+    {
+        if (paginaAtual < totalPaginas)
+        {
+            setPaginaAtual(paginaAtual + 1);
+        }
+    }
+
+    function paginaAnterior()
+    {
+        if (paginaAtual > 1)
+        {
+            setPaginaAtual(paginaAtual - 1);
+        }
+    }
+
+    useEffect(() => {
+        carregarPatrimonios();
+        setPaginaAtual(1);
+    }, [pesquisa]);
 
     return (
         <>
@@ -60,24 +115,26 @@ const Lista = ({ page }: ListaProps) => {
                         </thead>
 
                         <tbody>
-                            <tr>
-                                <td>1236808</td>
-                                <td>MESA TRAPEZOIDAL DC-1987a</td>
-                                <td>Mesa</td>
-                                <td>11/02/26</td>
+                            {patrimoniosPaginados.map((patrimonio) => (    
+                                <tr key={patrimonio.patrimonioID}>
+                                    <td>{patrimonio.numeroPatrimonio}</td>
+                                    <td>{patrimonio.denominacao}</td>
+                                    <td>{patrimonio.statusPatrimonioID}</td>
+                                    <td>-/-/-</td>
 
-                                <td>
-                                    <a href="#" aria-label="Ver detalhes do patrimonio">
-                                        <i className="fa-solid fa-circle-info" />
-                                    </a>
-                                </td>
+                                    <td>
+                                        <a href="#" aria-label="Ver detalhes do patrimonio">
+                                            <i className="fa-solid fa-circle-info" />
+                                        </a>
+                                    </td>
 
-                                <td>
-                                    <a href="#" aria-label="Transferir patrimonio">
-                                        <i className="fa-solid fa-arrow-right-arrow-left" />
-                                    </a>
-                                </td>
-                            </tr>
+                                    <td>
+                                        <a href="#" aria-label="Transferir patrimonio">
+                                            <i className="fa-solid fa-arrow-right-arrow-left" />
+                                        </a>
+                                    </td>
+                                </tr>
+                            ))}
                         </tbody>
                     </table>
                 </section>
@@ -123,19 +180,21 @@ const Lista = ({ page }: ListaProps) => {
             )}
 
             <nav className={styles.pagination} aria-label="Paginação">
-                <button type="button" className={styles.pagination_button} aria-label="Página anterior">
+                <button type="button" className={styles.pagination_button}
+                aria-label="Página anterior" onClick={paginaAnterior}>
                     <i className="fa-solid fa-angle-left"></i>
                 </button>
-                <a href="#" className={`${styles.pagination_link} ${styles.current}`} aria-current="page">
-                    1
-                </a>
-                <a href="#" className={styles.pagination_link}>
-                    2
-                </a>
-                <a href="#" className={styles.pagination_link}>
-                    3
-                </a>
-                <button type="button" className={styles.pagination_button} aria-label="Próxima página">
+
+                {totalPaginas > 0 &&
+                    Array.from({ length: totalPaginas }, (_, index) => (
+                        <button key={index} type="button" onClick={() => setPaginaAtual(index + 1)}
+                        className={paginaAtual === index + 1 ? `${styles.pagination_link} ${styles.current}` : styles.pagination_link}>
+                        {index + 1}</button>
+                    ))
+                }
+                
+                <button type="button" className={styles.pagination_button}
+                aria-label="Próxima página" onClick={proximaPagina}>
                     <i className="fa-solid fa-angle-right"></i>
                 </button>
             </nav>

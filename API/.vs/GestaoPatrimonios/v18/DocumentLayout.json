@@ -3,16 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\43698404818\\Desktop\\GestaoPatrimoniosPlaceholder\\API\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{769C1085-4D55-4173-831C-DA8276FFFE99}|GestaoPatrimonios\\GestaoPatrimonios.csproj|c:\\users\\43698404818\\desktop\\gestaopatrimoniosplaceholder\\api\\gestaopatrimonios\\contexts\\gestaopatrimonioscontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{769C1085-4D55-4173-831C-DA8276FFFE99}|GestaoPatrimonios\\GestaoPatrimonios.csproj|solutionrelative:gestaopatrimonios\\contexts\\gestaopatrimonioscontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{769C1085-4D55-4173-831C-DA8276FFFE99}|GestaoPatrimonios\\GestaoPatrimonios.csproj|c:\\users\\43698404818\\desktop\\gestaopatrimoniosplaceholder\\api\\gestaopatrimonios\\applications\\services\\localizacaoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{769C1085-4D55-4173-831C-DA8276FFFE99}|GestaoPatrimonios\\GestaoPatrimonios.csproj|solutionrelative:gestaopatrimonios\\applications\\services\\localizacaoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{769C1085-4D55-4173-831C-DA8276FFFE99}|GestaoPatrimonios\\GestaoPatrimonios.csproj|c:\\users\\43698404818\\desktop\\gestaopatrimoniosplaceholder\\api\\gestaopatrimonios\\repositories\\patrimoniorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{769C1085-4D55-4173-831C-DA8276FFFE99}|GestaoPatrimonios\\GestaoPatrimonios.csproj|solutionrelative:gestaopatrimonios\\repositories\\patrimoniorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{769C1085-4D55-4173-831C-DA8276FFFE99}|GestaoPatrimonios\\GestaoPatrimonios.csproj|c:\\users\\43698404818\\desktop\\gestaopatrimoniosplaceholder\\api\\gestaopatrimonios\\repositories\\localizacaorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{769C1085-4D55-4173-831C-DA8276FFFE99}|GestaoPatrimonios\\GestaoPatrimonios.csproj|solutionrelative:gestaopatrimonios\\repositories\\localizacaorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{769C1085-4D55-4173-831C-DA8276FFFE99}|GestaoPatrimonios\\GestaoPatrimonios.csproj|c:\\users\\43698404818\\desktop\\gestaopatrimoniosplaceholder\\api\\gestaopatrimonios\\applications\\services\\patrimonioservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{769C1085-4D55-4173-831C-DA8276FFFE99}|GestaoPatrimonios\\GestaoPatrimonios.csproj|solutionrelative:gestaopatrimonios\\applications\\services\\patrimonioservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{769C1085-4D55-4173-831C-DA8276FFFE99}|GestaoPatrimonios\\GestaoPatrimonios.csproj|c:\\users\\43698404818\\desktop\\gestaopatrimoniosplaceholder\\api\\gestaopatrimonios\\dtos\\localizacaodto\\listarlocalizacaodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{769C1085-4D55-4173-831C-DA8276FFFE99}|GestaoPatrimonios\\GestaoPatrimonios.csproj|solutionrelative:gestaopatrimonios\\dtos\\localizacaodto\\listarlocalizacaodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,44 +22,46 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "PatrimonioRepository.cs",
-              "DocumentMoniker": "C:\\Users\\43698404818\\Desktop\\GestaoPatrimoniosPlaceholder\\API\\GestaoPatrimonios\\Repositories\\PatrimonioRepository.cs",
-              "RelativeDocumentMoniker": "GestaoPatrimonios\\Repositories\\PatrimonioRepository.cs",
-              "ToolTip": "C:\\Users\\43698404818\\Desktop\\GestaoPatrimoniosPlaceholder\\API\\GestaoPatrimonios\\Repositories\\PatrimonioRepository.cs",
-              "RelativeToolTip": "GestaoPatrimonios\\Repositories\\PatrimonioRepository.cs",
-              "ViewState": "AgIAACwAAAAAAAAAAAAhwD4AAAAJAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "LocalizacaoService.cs",
+              "DocumentMoniker": "C:\\Users\\43698404818\\Desktop\\GestaoPatrimoniosPlaceholder\\API\\GestaoPatrimonios\\Applications\\Services\\LocalizacaoService.cs",
+              "RelativeDocumentMoniker": "GestaoPatrimonios\\Applications\\Services\\LocalizacaoService.cs",
+              "ToolTip": "C:\\Users\\43698404818\\Desktop\\GestaoPatrimoniosPlaceholder\\API\\GestaoPatrimonios\\Applications\\Services\\LocalizacaoService.cs",
+              "RelativeToolTip": "GestaoPatrimonios\\Applications\\Services\\LocalizacaoService.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAAowDAAAAA4AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-27T11:07:31.83Z"
+              "WhenOpened": "2026-05-28T13:15:10.624Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "GestaoPatrimoniosContext.cs",
-              "DocumentMoniker": "C:\\Users\\43698404818\\Desktop\\GestaoPatrimoniosPlaceholder\\API\\GestaoPatrimonios\\Contexts\\GestaoPatrimoniosContext.cs",
-              "RelativeDocumentMoniker": "GestaoPatrimonios\\Contexts\\GestaoPatrimoniosContext.cs",
-              "ToolTip": "C:\\Users\\43698404818\\Desktop\\GestaoPatrimoniosPlaceholder\\API\\GestaoPatrimonios\\Contexts\\GestaoPatrimoniosContext.cs",
-              "RelativeToolTip": "GestaoPatrimonios\\Contexts\\GestaoPatrimoniosContext.cs",
-              "ViewState": "AgIAACMAAAAAAAAAAAAswAAAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "LocalizacaoRepository.cs",
+              "DocumentMoniker": "C:\\Users\\43698404818\\Desktop\\GestaoPatrimoniosPlaceholder\\API\\GestaoPatrimonios\\Repositories\\LocalizacaoRepository.cs",
+              "RelativeDocumentMoniker": "GestaoPatrimonios\\Repositories\\LocalizacaoRepository.cs",
+              "ToolTip": "C:\\Users\\43698404818\\Desktop\\GestaoPatrimoniosPlaceholder\\API\\GestaoPatrimonios\\Repositories\\LocalizacaoRepository.cs",
+              "RelativeToolTip": "GestaoPatrimonios\\Repositories\\LocalizacaoRepository.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABUAAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-27T11:17:38.234Z",
+              "WhenOpened": "2026-05-28T13:12:47.865Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "PatrimonioService.cs",
-              "DocumentMoniker": "C:\\Users\\43698404818\\Desktop\\GestaoPatrimoniosPlaceholder\\API\\GestaoPatrimonios\\Applications\\Services\\PatrimonioService.cs",
-              "RelativeDocumentMoniker": "GestaoPatrimonios\\Applications\\Services\\PatrimonioService.cs",
-              "ToolTip": "C:\\Users\\43698404818\\Desktop\\GestaoPatrimoniosPlaceholder\\API\\GestaoPatrimonios\\Applications\\Services\\PatrimonioService.cs",
-              "RelativeToolTip": "GestaoPatrimonios\\Applications\\Services\\PatrimonioService.cs",
-              "ViewState": "AgIAAEQAAAAAAAAAAAAIwFkAAAAAAAAAAAAAAA==",
+              "Title": "ListarLocalizacaoDto.cs",
+              "DocumentMoniker": "C:\\Users\\43698404818\\Desktop\\GestaoPatrimoniosPlaceholder\\API\\GestaoPatrimonios\\DTOs\\LocalizacaoDto\\ListarLocalizacaoDto.cs",
+              "RelativeDocumentMoniker": "GestaoPatrimonios\\DTOs\\LocalizacaoDto\\ListarLocalizacaoDto.cs",
+              "ToolTip": "C:\\Users\\43698404818\\Desktop\\GestaoPatrimoniosPlaceholder\\API\\GestaoPatrimonios\\DTOs\\LocalizacaoDto\\ListarLocalizacaoDto.cs",
+              "RelativeToolTip": "GestaoPatrimonios\\DTOs\\LocalizacaoDto\\ListarLocalizacaoDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-27T11:14:40.807Z"
+              "WhenOpened": "2026-05-28T13:01:12.998Z",
+              "EditorCaption": ""
             }
           ]
         },
