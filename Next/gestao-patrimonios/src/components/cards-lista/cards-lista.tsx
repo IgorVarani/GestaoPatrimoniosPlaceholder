@@ -5,7 +5,19 @@ type ListaProps = {
 };
 
 const Lista = ({ page }: ListaProps) => {
-    
+
+    const [jogos, setJogos] = useState<Jogo[]>([]);
+    const [paginaAtual, setPaginaAtual] = useState(1);
+    const [ordenacao, setOrdenacao] = useState("");
+    const [pesquisa, setPesquisa] = useState("");
+    const estaLogado = verificarAutenticacao();
+    const cardsPorPagina = 3;
+
+    const indiceInicial = (paginaAtual - 1) * jogosPorPagina;
+    const indiceFinal = indiceInicial + jogosPorPagina;
+    const jogosPaginados = jogosOrdenados.slice(indiceInicial, indiceFinal);
+    const totalPaginas = Math.ceil(jogosOrdenados.length / jogosPorPagina);
+
     return (
         <>
             {page === "ambientes" && (
@@ -71,47 +83,7 @@ const Lista = ({ page }: ListaProps) => {
                 </section>
             )}
 
-            {page === "detalhes-cima" && (
-                <section className={`${styles.page_detalhes} ${styles.layout_guide}`} aria-labelledby="titulo-patrimonio">
-                        <a href="#"className={styles.back_link}>
-                            <i className="fa-solid fa-arrow-left" />Voltar
-                        </a>
-
-                        <h1 id={styles.titulo_patrimonio}>Patrimônio: 1236808</h1>
-
-                        <article className={styles.patrimonio_card}>
-                            <div className={styles.patrimonio_content}>
-
-                                <dl>
-                                    <dt>Denominação</dt>
-                                    <dd>NOTEBOOK ALTO DESEMPENHO P/ GAMER</dd>
-                                </dl>
-
-                                <dl>
-                                    <dt>Tipo</dt>
-                                    <dd>Mesa</dd>
-                                </dl>
-
-                                <dl>
-                                    <dt>Data transferência</dt>
-                                    <dd><time dateTime="2026-02-09">09/02/2026</time></dd>
-                                </dl>
-
-                                <dl>
-                                    <dt>Local Atual</dt>
-                                    <dd>Sala 09/10</dd>
-                                </dl>
-
-                                <dl>
-                                    <dt>Status Atual</dt>
-                                    <dd>Ativo</dd>
-                                </dl>
-                            </div>
-                        </article>
-                </section>
-            )}
-
-            {page === "detalhes-baixo" && (
+            {page === "detalhes" && (
                 <section className={`${styles.table_section} ${styles.layout_guide}`} aria-label="Lista de histórico do patrimônio">
                     <h2>Histórico</h2>
                     <table className={styles.history_table}>
@@ -150,7 +122,23 @@ const Lista = ({ page }: ListaProps) => {
                 </section>
             )}
 
-            
+            <nav className={styles.pagination} aria-label="Paginação">
+                <button type="button" className={styles.pagination_button} aria-label="Página anterior">
+                    <i className="fa-solid fa-angle-left"></i>
+                </button>
+                <a href="#" className={`${styles.pagination_link} ${styles.current}`} aria-current="page">
+                    1
+                </a>
+                <a href="#" className={styles.pagination_link}>
+                    2
+                </a>
+                <a href="#" className={styles.pagination_link}>
+                    3
+                </a>
+                <button type="button" className={styles.pagination_button} aria-label="Próxima página">
+                    <i className="fa-solid fa-angle-right"></i>
+                </button>
+            </nav>
         </>
     )
 }

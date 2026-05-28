@@ -92,22 +92,6 @@
     color: #ffffff;
 }
 
-.search_area input:focus,
-.filter_button:focus,
-.pagination_button:focus,
-.pagination_link:focus,
-.environment_table a:focus {
-    outline: 3px solid rgba(207, 41, 41, 0.35);
-    outline-offset: 3px;
-}
-
-.sr_only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-}
 
 /* ========================= */
 /* RESPONSIVIDADE TABLET */
