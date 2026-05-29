@@ -21,20 +21,7 @@ namespace GestaoPatrimonios.Applications.Services
 
         public List<ListarPatrimonioDto> Listar()
         {
-            List<Patrimonio> patrimonios = _repository.Listar();
-
-            List<ListarPatrimonioDto> patrimoniosDto = patrimonios.Select(patrimonio => new ListarPatrimonioDto
-            {
-                PatrimonioID = patrimonio.PatrimonioID,
-                Denominacao = patrimonio.Denominacao,
-                NumeroPatrimonio = patrimonio.NumeroPatrimonio,
-                Valor = patrimonio.Valor,
-                Imagem = patrimonio.Imagem,
-                LocalizacaoID = patrimonio.LocalizacaoID,
-                StatusPatrimonioID = patrimonio.StatusPatrimonioID
-            }).ToList();
-
-            return patrimoniosDto;
+            return _repository.Listar();
         }
 
         public ListarPatrimonioDto BuscarPorId(Guid patrimonioId)

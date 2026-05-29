@@ -1,10 +1,11 @@
 ﻿using GestaoPatrimonios.Domains;
+using GestaoPatrimonios.DTOs.PatrimonioDto;
 
 namespace GestaoPatrimonios.Interfaces
 {
     public interface IPatrimonioRepository
     {
-        List<Patrimonio> Listar();
+        List<ListarPatrimonioDto> Listar();
         Patrimonio BuscarPorId(Guid patrimonioId);
         bool BuscarPorNumeroPatrimonio(string numeroPatrimonio);
 

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import styles from "./cards-lista.module.css"
 import { verificarAutenticacao } from "@/src/utils/auth";
 import { listarPatrimonio } from "@/src/pages/api/patrimonioService";
+import Link from "next/link";
 
 type ListaProps = {
     page?: string;
@@ -15,16 +16,17 @@ type Patrimonio =
     valor: number,
     localizacaoID: string,
     statusPatrimonioID: string,
+    dataTransferencia: string,
 }
 
 const Lista = ({ page }: ListaProps) => {
 
     const [patrimonios, setPatrimonios] = useState<Patrimonio[]>([]);
     const [paginaAtual, setPaginaAtual] = useState(1);
-    const [ordenacao, setOrdenacao] = useState("");
+    //const [ordenacao, setOrdenacao] = useState("");
     const [pesquisa, setPesquisa] = useState("");
     const estaLogado = verificarAutenticacao();
-    const cardsPorPagina = 3;
+    const cardsPorPagina = 500;
 
     async function carregarPatrimonios()
     {
@@ -70,6 +72,9 @@ const Lista = ({ page }: ListaProps) => {
 
     useEffect(() => {
         carregarPatrimonios();
+    }, []);
+
+    useEffect(() => {
         setPaginaAtual(1);
     }, [pesquisa]);
 
@@ -107,8 +112,7 @@ const Lista = ({ page }: ListaProps) => {
                             <tr>
                                 <th>Patrimônio</th>
                                 <th>Denominação</th>
-                                <th>Tipo</th>
-                                <th>Data transfêrencia</th>
+                                <th>Data Trans.</th>
                                 <th>Detalhes</th>
                                 <th>Transferir</th>
                             </tr>
@@ -119,13 +123,12 @@ const Lista = ({ page }: ListaProps) => {
                                 <tr key={patrimonio.patrimonioID}>
                                     <td>{patrimonio.numeroPatrimonio}</td>
                                     <td>{patrimonio.denominacao}</td>
-                                    <td>{patrimonio.statusPatrimonioID}</td>
-                                    <td>-/-/-</td>
+                                    <td>{new Date(patrimonio.dataTransferencia).toLocaleDateString("pt-BR")}</td>
 
                                     <td>
-                                        <a href="#" aria-label="Ver detalhes do patrimonio">
+                                        <Link href="/detalhes">
                                             <i className="fa-solid fa-circle-info" />
-                                        </a>
+                                        </Link>
                                     </td>
 
                                     <td>
@@ -147,7 +150,7 @@ const Lista = ({ page }: ListaProps) => {
                         <thead>
                             <tr>
                                 <th>Data</th>
-                                <th>Tipo de movimentação</th>
+                                <th>Tipo de Mov.</th>
                                 <th>Origem</th>
                                 <th>Destino</th>
                                 <th>Responsável</th>

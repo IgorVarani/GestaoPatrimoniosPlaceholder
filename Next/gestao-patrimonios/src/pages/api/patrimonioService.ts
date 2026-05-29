@@ -8,6 +8,7 @@ type PatrimonioForm =
     valor: number,
     localizacaoID: string,
     statusPatrimonioID: string,
+    DataTransferencia: string,
 }
 
 interface PatrimonioList
@@ -18,6 +19,7 @@ interface PatrimonioList
     valor: number,
     localizacaoID: string,
     statusPatrimonioID: string,
+    dataTransferencia: string,
 }
 
 export async function listarPatrimonio()
@@ -26,12 +28,7 @@ export async function listarPatrimonio()
     {
         const response = await api.get("Patrimonio");
 
-        const patrimoniosAtivos = response.data.filter
-        (
-            (patrimonio: PatrimonioList) => patrimonio.statusPatrimonioID === "1"
-        );
-
-        return patrimoniosAtivos;
+        return response.data;
     }
     catch(error: any)
     {

@@ -1,5 +1,6 @@
 ﻿using GestaoPatrimonios.Contexts;
 using GestaoPatrimonios.Domains;
+using GestaoPatrimonios.DTOs.PatrimonioDto;
 using GestaoPatrimonios.Interfaces;
 
 namespace GestaoPatrimonios.Repositories
@@ -13,9 +14,27 @@ namespace GestaoPatrimonios.Repositories
             _context = context;
         }
 
-        public List<Patrimonio> Listar()
+        public List<ListarPatrimonioDto> Listar()
         {
-            return _context.Patrimonio.OrderBy(patrimonio => patrimonio.Denominacao).ToList();
+            return _context.Patrimonio
+                .Select(p => new ListarPatrimonioDto
+                {
+                    PatrimonioID = p.PatrimonioID,
+                    Denominacao = p.Denominacao,
+                    NumeroPatrimonio = p.NumeroPatrimonio,
+                    Valor = p.Valor,
+                    Imagem = p.Imagem,
+                    LocalizacaoID = p.LocalizacaoID,
+                    StatusPatrimonioID = p.StatusPatrimonioID,
+
+                    DataTransferencia = _context.LogPatrimonio
+                        .Where(l => l.PatrimonioID == p.PatrimonioID)
+                        .OrderByDescending(l => l.DataTransferencia)
+                        .Select(l => l.DataTransferencia)
+                        .FirstOrDefault()
+                })
+                .OrderBy(p => p.Denominacao)
+                .ToList();
         }
 
         public Patrimonio BuscarPorId(Guid patrimonioId)
