@@ -1,3 +1,4 @@
+import { erro } from "@/src/utils/toast";
 import { api } from "./api";
 
 type PatrimonioForm =
@@ -49,5 +50,21 @@ export async function listarPorId(id: number)
     catch(error: any)
     {
         throw new Error(error.response.data);
+    }
+}
+
+export async function importarPatrimonioCsv(arquivo: File)
+{
+    try
+    {
+        const formData = new FormData();
+        formData.append("arquivoCsv", arquivo)
+
+        await api.post("Patrimonio/importar-csv", formData,
+            { headers: { "Content-Type": "multipart/form-data" } });
+    }
+    catch (error: any)
+    {
+        throw new Error(error.response?.data);
     }
 }

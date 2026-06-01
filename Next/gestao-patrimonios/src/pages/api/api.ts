@@ -5,9 +5,15 @@ const apiLocal = "https://localhost:7063/api/"; //? Criar um endereco da API loc
 
 const apiRemota = ""; //? Criar um endereco da API remota. Ex: https://api.minhaapp.com
 
+const apiViaCep = "https://viacep.com.br/ws/"; //? Criar o link para o consumo da API "Via CEP".
+
 //? Criar um endereco da API dentro do axios.
 export const api = axios.create({
     baseURL: apiLocal
+})
+
+export const apiCep = axios.create({
+    baseURL: apiViaCep
 })
 
 //? É um interceptor do Axios, ele intercepta toda requisição antes de ser enviada.
